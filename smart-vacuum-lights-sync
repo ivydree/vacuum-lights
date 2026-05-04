@@ -136,6 +136,12 @@ action:
                           - condition: template
                             value_template: "{{ light_brightness != '' }}"
                         sequence:
+                            - action: scene.create
+                              metadata: {}
+                              data:
+                              scene_id: state_before_vaccum
+                              snapshot_entities:
+                                - entity_id: "{{ (lights_map | from_json)[room] }}"
                           - service: light.turn_on
                             data:
                               brightness_pct: "{{ light_brightness | int }}"
@@ -154,9 +160,11 @@ action:
                   - condition: template
                     value_template: "{{ previous_room != '' and previous_room != room and previous_room in (lights_map | from_json) }}"
                 sequence:
-                  - service: light.turn_off
+                  - action: scene.turn_on
+                    metadata: {}
+                    data: {}
                     target:
-                      entity_id: "{{ (lights_map | from_json)[previous_room] }}"
+                      entity_id: scene.state_before_vaccum
 
           - choose:
               - conditions:
