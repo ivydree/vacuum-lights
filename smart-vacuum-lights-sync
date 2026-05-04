@@ -149,9 +149,9 @@ action:
                             - action: scene.create
                               metadata: {}
                               data:
-                              scene_id: state_before_vaccum
-                              snapshot_entities:
-                                - entity_id: "{{ (lights_map | from_json)[room] }}"
+                                scene_id: state_before_vaccum
+                                snapshot_entities:
+                                  - entity_id: "{{ (lights_map | from_json)[room] }}"
                             - service: light.turn_on
                               data:
                                 brightness_pct: "{{ light_brightness | int }}"
