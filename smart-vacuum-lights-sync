@@ -1,5 +1,5 @@
 blueprint:
-  name: Smart Vacuum & Light Sync V1.00
+  name: Smart Vacuum & Light Sync V1.01
   description: >
     This Home Assistant automation synchronizes your home lights with the movements of your robot vacuum.
     It automatically turns on the light in the room where the vacuum is cleaning or entering,
@@ -142,11 +142,11 @@ action:
                               scene_id: state_before_vaccum
                               snapshot_entities:
                                 - entity_id: "{{ (lights_map | from_json)[room] }}"
-                          - service: light.turn_on
-                            data:
-                              brightness_pct: "{{ light_brightness | int }}"
-                            target:
-                              entity_id: "{{ (lights_map | from_json)[room] }}"
+                            - service: light.turn_on
+                              data:
+                                brightness_pct: "{{ light_brightness | int }}"
+                              target:
+                                entity_id: "{{ (lights_map | from_json)[room] }}"
                       - conditions:
                           - condition: template
                             value_template: "{{ light_brightness == '' }}"
