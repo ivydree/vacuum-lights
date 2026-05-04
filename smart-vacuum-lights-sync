@@ -37,6 +37,16 @@ blueprint:
         {"Bathroom": "light.lumieres_sdb", "Dining Hall": "light.lumieres_sam", "Living Room": "light.lumieres_salon", "Kitchen": "light.lumieres_cuisine"}
       selector:
         text: {}
+    
+    light_scene:
+      name: "Robot Light Scene"
+      description: >
+        Name of the scene used to save the state of lights.
+      default: []
+      selector:
+        entity:
+          domain: scene
+          multiple: false
 
     presence_entities:
       name: "Presence entities (optional)"
