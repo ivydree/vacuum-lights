@@ -150,7 +150,7 @@ action:
                             - action: scene.create
                               metadata: {}
                               data:
-                                scene_id: {{ light_scene }}
+                                scene_id: "{{ light_scene }}"
                                 snapshot_entities:
                                   - entity_id: "{{ (lights_map | from_json)[room] }}"
                             - service: light.turn_on
@@ -175,7 +175,7 @@ action:
                     metadata: {}
                     data: {}
                     target:
-                      entity_id: {{ light_scene }}
+                      entity_id: "{{ light_scene }}"
 
           - choose:
               - conditions:
